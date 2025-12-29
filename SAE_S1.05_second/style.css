@@ -1,0 +1,101 @@
+/* --- CONFIGURATION GLOBALE --- */
+:root {
+    --amu-blue: #006a9e;
+    --amu-blue-dark: #004e75;
+    --amu-yellow: #ffcd00;
+    --amu-dark: #333333;
+}
+
+html {
+    scroll-behavior: smooth; /* Défilement fluide quand on clique sur le menu */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Imposé par la charte */
+    color: var(--amu-dark);
+    line-height: 1.7;
+    background-color: #f9f9f9; /* Fond très légèrement gris pour casser le blanc pur */
+}
+
+/* --- NAVBAR --- */
+.navbar-amu {
+    background-color: var(--amu-blue);
+    transition: all 0.3s;
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.9) !important;
+    position: relative;
+}
+
+/* Petit effet de soulignement jaune au survol */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 5px;
+    left: 0;
+    background-color: var(--amu-yellow);
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--amu-yellow) !important;
+}
+
+/* --- HERO HEADER (La partie magnifique) --- */
+.hero-section {
+    background: linear-gradient(135deg, var(--amu-blue) 0%, var(--amu-blue-dark) 100%);
+    min-height: 80vh; /* Prend 80% de la hauteur de l'écran */
+    position: relative;
+    /* Si tu trouves une photo de l'IUT, tu peux l'ajouter ici en background-image */
+}
+
+/* --- TITRES --- */
+h2 {
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+/* --- CARTES COMPETENCES (Effets 3D) --- */
+.card-competence {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    background: white;
+}
+
+.card-competence:hover {
+    transform: translateY(-10px); /* La carte remonte */
+    box-shadow: 0 15px 30px rgba(0, 106, 158, 0.15) !important; /* Ombre bleue légère */
+}
+
+.card-competence .icon-box {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.card-competence:hover .icon-box {
+    background-color: var(--amu-blue) !important;
+    color: var(--amu-yellow) !important;
+}
+
+/* --- BADGES ET BOUTONS --- */
+.bg-amu-blue-light {
+    background-color: rgba(0, 106, 158, 0.1);
+}
+
+.text-amu-blue { color: var(--amu-blue) !important; }
+.text-amu-yellow { color: var(--amu-yellow) !important; }
+.bg-amu-blue { background-color: var(--amu-blue) !important; }
+.bg-amu-yellow { background-color: var(--amu-yellow) !important; }
+
+/* Espacement pour respirer */
+.section-padding {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}

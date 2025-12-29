@@ -7,14 +7,14 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Défilement fluide quand on clique sur le menu */
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif; /* Imposé par la charte */
+    font-family: Arial, Helvetica, sans-serif;
     color: var(--amu-dark);
     line-height: 1.7;
-    background-color: #f9f9f9; /* Fond très légèrement gris pour casser le blanc pur */
+    background-color: #f9f9f9;
 }
 
 /* --- NAVBAR --- */
@@ -24,36 +24,47 @@ body {
 }
 
 .nav-link {
-    color: rgba(255,255,255,0.9) !important;
+    color: rgba(255,255,255,0.85) !important;
     position: relative;
+    transition: color 0.3s;
 }
 
-/* Petit effet de soulignement jaune au survol */
+.nav-link:hover, .nav-link.active {
+    color: var(--amu-yellow) !important;
+}
+
+/* Soulignement jaune au survol ou si actif */
 .nav-link::after {
     content: '';
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: 5px;
+    bottom: 0;
     left: 0;
     background-color: var(--amu-yellow);
     transition: width 0.3s;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after, .nav-link.active::after {
     width: 100%;
 }
 
-.nav-link:hover {
-    color: var(--amu-yellow) !important;
+/* Bouton Glossaire spécial */
+.nav-link.btn {
+    border: 1px solid rgba(255,255,255,0.5);
 }
+.nav-link.btn:hover, .nav-link.btn.active {
+    background-color: white;
+    color: var(--amu-blue) !important;
+    border-color: white;
+}
+.nav-link.btn::after { display: none; } /* Pas de soulignement pour le bouton */
 
-/* --- HERO HEADER (La partie magnifique) --- */
+
+/* --- HERO HEADER --- */
 .hero-section {
     background: linear-gradient(135deg, var(--amu-blue) 0%, var(--amu-blue-dark) 100%);
-    min-height: 80vh; /* Prend 80% de la hauteur de l'écran */
-    position: relative;
-    /* Si tu trouves une photo de l'IUT, tu peux l'ajouter ici en background-image */
+    min-height: 80vh;
 }
 
 /* --- TITRES --- */
@@ -63,7 +74,7 @@ h2 {
     display: inline-block;
 }
 
-/* --- CARTES COMPETENCES (Effets 3D) --- */
+/* --- CARTES COMPETENCES --- */
 .card-competence {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 12px;
@@ -71,8 +82,8 @@ h2 {
 }
 
 .card-competence:hover {
-    transform: translateY(-10px); /* La carte remonte */
-    box-shadow: 0 15px 30px rgba(0, 106, 158, 0.15) !important; /* Ombre bleue légère */
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 106, 158, 0.15) !important;
 }
 
 .card-competence .icon-box {
@@ -84,11 +95,7 @@ h2 {
     color: var(--amu-yellow) !important;
 }
 
-/* --- BADGES ET BOUTONS --- */
-.bg-amu-blue-light {
-    background-color: rgba(0, 106, 158, 0.1);
-}
-
+/* --- CLASSES UTILITAIRES --- */
 .text-amu-blue { color: var(--amu-blue) !important; }
 .text-amu-yellow { color: var(--amu-yellow) !important; }
 .bg-amu-blue { background-color: var(--amu-blue) !important; }

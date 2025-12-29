@@ -106,3 +106,50 @@ h2 {
     padding-top: 60px;
     padding-bottom: 60px;
 }
+
+/* --- AMÉLIORATIONS UX SUPPLÉMENTAIRES --- */
+
+/* 1. Bouton Retour en haut */
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* Caché par défaut */
+    z-index: 999; /* Toujours au-dessus */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: var(--amu-yellow);
+    color: var(--amu-dark);
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+#btn-back-to-top:hover {
+    transform: scale(1.1); /* Petit grossissement au survol */
+    background-color: #e6b800;
+}
+
+/* 2. Animation d'apparition (Fade In Up) */
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3. Carte cliquable (Extension du lien) */
+/* Utilitaire Bootstrap "stretched-link" utilisé dans le HTML, 
+   mais on s'assure ici que la carte reste relative */
+.card {
+    position: relative;
+}

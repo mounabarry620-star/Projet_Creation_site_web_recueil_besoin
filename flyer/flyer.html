@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Flyer BUT Informatique - IUT Arles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- RESET & BASE --- */
+        :root {
+            --amu-blue: #0077b6; /* Bleu officiel IUT */
+            --amu-dark: #023e8a;
+            --amu-yellow: #ffcc00; /* Jaune peps */
+            --text-main: #2c3e50;
+            --bg-light: #f4f7f6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif; }
+        
+        body {
+            background-color: #333; /* Juste pour la présentation à l'écran */
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* --- CONTENEUR A4 --- */
+        .flyer-container {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* --- 1. EN-TÊTE AVEC LOGO & PHOTO BATIMENT --- */
+        header {
+            height: 20%; /* Plus grand pour combler le vide */
+            background-color: var(--amu-dark);
+            position: relative;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            /* ICI : On met l'image du bâtiment en fond teinté */
+            background-image: linear-gradient(rgba(2, 62, 138, 0.85), rgba(2, 62, 138, 0.7)), url('URL_IMAGE_BATIMENT_IUT.jpg'); 
+            background-size: cover;
+            background-position: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .header-content { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Emplacement du Logo */
+        .logo-box img {
+            height: 80px; /* Taille du logo */
+            background: white; /* Fond blanc pour le logo si c'est un PNG transparent */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .titles { text-align: right; }
+        h1 { font-size: 2.8rem; text-transform: uppercase; line-height: 1; margin-bottom: 5px; }
+        .subtitle { font-size: 1.1rem; color: var(--amu-yellow); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- 2. VISUEL CENTRAL --- */
+        .hero {
+            height: 25%;
+            position: relative;
+            margin-top: 30px; /* Chevauchement design */
+            
+        }
+        .hero img {
+               width: 100%;           /* Prend toute la largeur */
+               height: 100%;          /* Prend toute la hauteur du bloc hero */
+               object-fit: cover;     /* LE SECRET : Recadre l'image sans la déformer (comme un zoom) */
+               object-position: center; /* Centre l'image (tu peux changer par 'top' ou 'bottom') */
+               justify-content: center;
+               display: block;        /* Enlève les petits espaces blancs fantômes */
+               margin-top: -30px;    /* Remonte l'image pour le chevauchement */
+               margin-bottom: 0;  /* Espace en bas */
+}
+        .hero-tag {
+            position: absolute;
+            bottom: 10px; right: 20px;
+            background: var(--amu-yellow);
+            color: var(--amu-dark);
+            padding: 8px 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transform: skewX(-10deg);
+            box-shadow: 3px 3px 0px var(--amu-dark);
+        }
+
+        /* --- 3. CONTENU PRINCIPAL --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 10px 30px;
+            display: grid;
+            grid-template-columns: 45% 50%; /* 2 colonnes */
+            gap: 5%;
+        }
+
+        .section-title {
+            color: var(--amu-blue);
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 3px solid var(--amu-yellow);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Liste Compétences avec icônes FontAwesome */
+        .skills-list { list-style: none; }
+        .skills-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            color: #444;
+        }
+        .skills-list i {
+            color: var(--amu-blue);
+            font-size: 1.2rem;
+            margin-right: 12px;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        /* Bloc Info BUT (Le côté dense) */
+        .info-box {
+            background: #f0f4f8;
+            padding: 15px;
+            border-left: 5px solid var(--amu-dark);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .info-box strong { color: var(--amu-dark); }
+
+        /* --- 4. FOOTER APPEL A L'ACTION --- */
+        footer {
+            background: var(--amu-dark);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .cta-text h3 { font-size: 1.5rem; color: var(--amu-yellow); margin-bottom: 5px; }
+        .cta-text p { font-size: 0.9rem; margin-bottom: 2px; }
+        .cta-text i { margin-right: 8px; color: var(--amu-blue); background: white; padding: 5px; border-radius: 50%; width: 25px; text-align: center; }
+
+        .qr-section {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 5px 15px 5px 5px;
+            border-radius: 5px;
+        }
+        .qr-placeholder {
+            width: 70px; height: 70px;
+            background: #ddd; /* REMPLACER PAR TON IMAGE QR CODE */
+            display: flex; align-items: center; justify-content: center;
+            color: black; font-weight: bold; font-size: 0.7rem; text-align: center;
+        }
+        .qr-text { color: var(--amu-dark); font-weight: bold; margin-left: 10px; line-height: 1.2; font-size: 0.9rem; }
+
+    </style>
+</head>
+<body>
+
+    <div class="flyer-container">
+        
+        <header>
+            <div class="header-content">
+                <div class="logo-box">
+                    <img src="Logo IUT Info Arles.png" alt="Logo AMU">
+                </div>
+                <div class="titles">
+                    <h1>BUT Informatique</h1>
+                    <div class="subtitle">IUT d'Aix-Marseille &mdash; Site d'Arles</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="hero">
+            <img src="image_iut_t.webp" alt="Photo Étudiants IUT">
+            <div class="hero-tag">FORMATION PUBLIC D'EXCELLENCE</div>
+        </div>
+
+        <div class="main-content">
+            
+            <div class="col-left">
+                <h2 class="section-title">La Formation</h2>
+                <div class="info-box">
+                    <p><strong>Bachelor Universitaire de Technologie</strong><br>
+                    Grade de Licence (Bac+3) • 180 ECTS</p>
+                    <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ccc;">
+                    <p style="margin-top:5px;"><i class="fas fa-check-circle" style="color:green;"></i> <strong>Professionnalisant :</strong> 22 à 26 semaines de stage.</p>
+                    <p style="margin-top:5px;"><i class="fas fa-briefcase" style="color:green;"></i> <strong>Alternance :</strong> Possible dès la 2ème année.</p>
+                </div>
+
+                <h2 class="section-title">Pourquoi Arles ?</h2>
+                <ul class="skills-list">
+                    <li><i class="fas fa-users"></i> Pédagogie par petits groupes</li>
+                    <li><i class="fas fa-project-diagram"></i> Apprentissage par Projets (SAÉ)</li>
+                    <li><i class="fas fa-laptop-code"></i> Matériel récent et salles dédiées</li>
+                </ul>
+            </div>
+
+            <div class="col-right">
+                <h2 class="section-title">Compétences Acquises</h2>
+                <ul class="skills-list">
+                    <li><i class="fas fa-mobile-alt"></i> <strong>Réaliser :</strong> Conception d'applis web et mobiles</li>
+                    <li><i class="fas fa-database"></i> <strong>Gérer :</strong> Administration des bases de données</li>
+                    <li><i class="fas fa-server"></i> <strong>Administrer :</strong> Systèmes et réseaux sécurisés</li>
+                    <li><i class="fas fa-chart-line"></i> <strong>Optimiser :</strong> Algorithmes et performances</li>
+                </ul>
+
+                <h2 class="section-title">Débouchés</h2>
+                <div style="font-size: 0.9rem; color: #555; background: white; padding: 10px; border: 1px dashed #aaa;">
+                    <strong>Métiers :</strong> Développeur Full-Stack, DevOps, Data Analyst, Admin Sys...<br><br>
+                    <strong>Poursuites :</strong> Masters Universitaires, Écoles d'Ingénieurs.
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <div class="cta-text">
+                <h3>VENEZ NOUS RENCONTRER !</h3>
+                <p><i class="fas fa-calendar-alt"></i> <strong>Journée Portes Ouvertes :</strong> Samedi 10 Février</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rue Raoul Follereau, 13200 Arles</p>
+            </div>
+            
+            <div class="qr-section">
+                <div class="qr-placeholder">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://iut.univ-amu.fr" alt="QR Code" style="width:100%; height:100%;">
+                </div>
+                <div class="qr-text">SCANNEZ<br>POUR + D'INFOS</div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

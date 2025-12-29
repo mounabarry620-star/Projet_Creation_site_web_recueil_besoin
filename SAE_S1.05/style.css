@@ -1,0 +1,104 @@
+/* PROJET WEB - IUT ARLES
+   Charte Graphique basée sur "Charte AMU 2024.pdf"
+   Police imposée : Arial
+*/
+
+:root {
+    /* Définition des variables de couleurs AMU */
+    --amu-blue: #006a9e;    /* Bleu officiel */
+    --amu-yellow: #ffcd00;  /* Jaune/Or officiel */
+    --amu-dark: #333333;    /* Gris foncé pour le texte */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Charte Page 5 */
+    color: var(--amu-dark);
+    line-height: 1.6;
+}
+
+/* --- Navigation --- */
+.navbar-amu {
+    background-color: var(--amu-blue);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.navbar-amu .nav-link {
+    color: white !important;
+    font-weight: bold;
+    margin-left: 15px;
+    transition: color 0.3s;
+}
+
+.navbar-amu .nav-link:hover {
+    color: var(--amu-yellow) !important; /* Effet de survol jaune */
+}
+
+/* --- Titres --- */
+h2 {
+    color: var(--amu-blue);
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Petite ligne jaune sous les titres H2 */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--amu-yellow);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+/* Centrer la ligne jaune si le titre est centré */
+.text-center h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* --- Cartes Compétences --- */
+.card {
+    transition: transform 0.2s;
+    border: none;
+    border-top: 4px solid var(--amu-blue); /* Bordure bleue en haut */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Petit effet de saut au survol */
+}
+
+.card-header {
+    background-color: white;
+    color: var(--amu-blue);
+    border-bottom: 2px solid var(--amu-yellow);
+}
+
+/* --- Boutons personnalisés AMU --- */
+.btn-amu-blue {
+    background-color: var(--amu-blue);
+    color: white;
+    border: none;
+}
+.btn-amu-blue:hover {
+    background-color: #005680; /* Bleu un peu plus foncé */
+    color: white;
+}
+
+.text-amu-blue {
+    color: var(--amu-blue);
+    font-weight: bold;
+}
+
+/* --- Bordure spéciale --- */
+.border-amu-blue {
+    border-color: var(--amu-blue) !important;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--amu-dark);
+    margin-top: 50px;
+}
